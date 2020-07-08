@@ -48,7 +48,7 @@ pipeline {
 
 		stage('Create Artifact') {
 			steps {
-				archiveArtifacts artifacts: '*.tar'
+				archiveArtifacts artifacts: '*.tgz'
 			}
 		}
 
