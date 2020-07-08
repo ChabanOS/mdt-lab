@@ -46,9 +46,21 @@ pipeline {
 			}
 		}
 
-		stage('Create Artifact') {
+		stage('Upload Artifact') {
 			steps {
-				archiveArtifacts artifacts: '*.tgz'
+				nexusArtifactUploader artifacts: [
+					[artifactId: 'site-archive', 
+					classifier: '', 
+					file: 'site-archive.tgz', 
+					type: 'tgz']
+				], 
+				credentialsId: 'acd97e08-b27d-4677-a580-2d2555874441', 
+				groupId: 'site', 
+				nexusUrl: 'server2.jenkins-practice.tk', 
+				nexusVersion: 'nexus3', 
+				protocol: 'https', 
+				repository: 'student1-repo', 
+				version: '${RELEASE_VER}-${BUILD_NUMBER}'
 			}
 		}
 
