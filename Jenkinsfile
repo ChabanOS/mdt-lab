@@ -40,7 +40,7 @@ pipeline {
 		stage('Archie mdt') {
 			steps {
 				sh label: 'Archive artefact', script: """
-				cd ${WORKSPACE}
+				cd ${WORKSPACE}/www
 				tar --exclude='./css' --exclude='./js' -c -z -f ../site-archive-${params.RELEASE}-${params.RELEASE_VER}-${BUILD_NUMBER}.tgz .
 				"""
 			}
