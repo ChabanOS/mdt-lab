@@ -49,9 +49,9 @@ pipeline {
 		stage('Upload Artifact') {
 			steps {
 				nexusArtifactUploader artifacts: [
-					[artifactId: 'site-archive', 
+					[artifactId: 'site-archive-${RELEASE}-${RELEASE_VER}-${BUILD_NUMBER}', 
 					classifier: '', 
-					file: 'site-archive.tgz', 
+					file: 'site-archive-${RELEASE}-${RELEASE_VER}-${BUILD_NUMBER}.tgz', 
 					type: 'tgz']
 				], 
 				credentialsId: 'acd97e08-b27d-4677-a580-2d2555874441', 
