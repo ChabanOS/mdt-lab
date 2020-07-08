@@ -36,22 +36,23 @@ pipeline {
                 }
             }
 		}
-			stage('Archie mdt') {
-				steps {
-					sh label: 'Archive artefact', script: """
-					cd ${WORKSPACE}
-					tar --exclude='./css' --exclude='./js' -c -z -f ../site-archive-${params.RELEASE}-${params.RELEASE_VER}-${BUILD_NUMBER}.tgz .
-					"""
-				}
-			}
-
-			stage('Create Artifact') {
-				steps {
-					archiveArtifacts artifacts: '*.tar'
-				}
-			}
-
 	}
+		stage('Archie mdt') {
+			steps {
+				sh label: 'Archive artefact', script: """
+				cd ${WORKSPACE}
+				tar --exclude='./css' --exclude='./js' -c -z -f ../site-archive-${params.RELEASE}-${params.RELEASE_VER}-${BUILD_NUMBER}.tgz .
+				"""
+			}
+		}
+
+		stage('Create Artifact') {
+			steps {
+				archiveArtifacts artifacts: '*.tar'
+			}
+		}
+
+	
   
 }
 }
