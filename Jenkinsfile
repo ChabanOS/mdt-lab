@@ -18,12 +18,11 @@ pipeline {
 			}
 		}
 		stage('Sonar') {
-			steps{
+			steps {
 				withSonarQubeEnv(installationName: 'sonarscanner4', credentialsId: 'student1-sonar') {
 					scripts{
-						sonarHome = tool 'sonarscanner4'
 						sh """
-						${sonarHome}/bin/sonar-scanner -Dconar.projectKey=student1-project -Dsonar.sources=www -Dsonar.host.url=https://server1.jenkins-practice.tk
+						sonar-scanner -Dconar.projectKey=student1-project -Dsonar.sources=www -Dsonar.host.url=https://server1.jenkins-practice.tk
 						"""
 					}
 				}
