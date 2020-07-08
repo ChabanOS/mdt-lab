@@ -23,7 +23,7 @@ pipeline {
 					scripts{
 						sonarHome = tool 'sonarscanner4'
 						sh """
-						${sonarscanner4}/bin/sonar-scanner -Dconar.projectKey=student1-project -Dsonar.sources=www -Dsonar.host.url=https://server1.jenkins-practice.tk
+						${sonarHome}/bin/sonar-scanner -Dconar.projectKey=student1-project -Dsonar.sources=www -Dsonar.host.url=https://server1.jenkins-practice.tk
 						"""
 					}
 				}
